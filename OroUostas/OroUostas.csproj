@@ -187,6 +187,9 @@
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Klientas\Index.cshtml" />
+    <Content Include="Views\Klientas\Create.cshtml" />
+    <Content Include="Views\Klientas\Delete.cshtml" />
+    <Content Include="Views\Klientas\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

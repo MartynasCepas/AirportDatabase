@@ -1,0 +1,79 @@
+﻿@model OroUostas.Models.Klientas
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Kliento šalinimas</h2>
+
+<h3>Ar tikrai norite pašalinti šį klientą?</h3>
+<div>
+    <h4>Klientas</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.asmens_kodas)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.asmens_kodas)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.vardas)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.vardas)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.pavarde)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.pavarde)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.amzius)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.amzius)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.telefono_numeris)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.telefono_numeris)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.elektroninis_pastas)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.elektroninis_pastas)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            @if (ViewBag.naudojama != null)
+            {
+                <h5 style="color:red">@ViewBag.naudojama</h5>
+            }
+            else
+            {
+                <input type="submit" value="Šalinti" class="btn btn-danger" />
+            }
+            @Html.ActionLink("Atgal į sąrašą", "Index", "Klientas", new { @class = "btn btn-default" })
+        </div>
+    }
+</div>
