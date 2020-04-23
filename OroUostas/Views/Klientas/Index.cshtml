@@ -1,0 +1,60 @@
+﻿@model IEnumerable<OroUostas.Models.Klientas>
+
+@{
+    ViewBag.Title = "Klientai";
+}
+
+<h2>Klientai</h2>
+
+<table class="table table-striped datatable">
+    <thead>
+        <tr style="background-color: lightblue">
+            <th>
+                @Html.DisplayNameFor(model => model.asmens_kodas)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.vardas)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.pavarde)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.amzius)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.telefono_numeris)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.elektroninis_pastas)
+            </th>
+            <th style="width: 18%"></th>
+        </tr>
+    </thead>
+    <tbody>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.asmens_kodas)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.vardas)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.pavarde)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.amzius)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.telefono_numeris)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.elektroninis_pastas)
+                </td>
+            </tr>
+        }
+    </tbody>
+
+</table>
