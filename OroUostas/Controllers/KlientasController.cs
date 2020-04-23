@@ -66,15 +66,17 @@ namespace OroUostas.Controllers
             {
                 bool naudojama = false;
 
-           //     if (klientaiRepository.getKlientasSutarciuCount(id)>0)
-           //     {
-           //         naudojama = true;
-           //         ViewBag.naudojama = "Negalima pašalinti klientas turėjo sudarytų sutarčių";
-           //         return View(klientasRepository.getKlientas(id));
-           //     }
+                if (klientaiRepository.getKlientasBilietuCount(id)>0)
+               {
+                    naudojama = true;
+                    ViewBag.naudojama = "Negalima pašalinti klientas turėjo bilietų";
+                    return View(klientaiRepository.getKlientas(id));
+                }
 
-                
-                klientaiRepository.deleteKlientas(id);
+                if (!naudojama)
+                {
+                    klientaiRepository.deleteKlientas(id);
+                }
                 
 
                 return RedirectToAction("Index");
