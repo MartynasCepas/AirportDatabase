@@ -48,6 +48,56 @@ namespace OroUostas.Controllers
             }
         }
 
+        public ActionResult Edit(int id)
+        {
+            SkrydisEditViewModel skrydis = skrydziaiRepository.getSkrydis(id);
+            PopulateSelections(skrydis);
+            return View(skrydis);
+        }
+
+        [HttpPost]
+        public ActionResult Edit(int id, SkrydisEditViewModel collection)
+        {
+            try
+            {
+                // TODO: Add update logic here
+                if (ModelState.IsValid)
+                {
+                    skrydziaiRepository.updateSkrydis(collection);
+                }
+
+                return RedirectToAction("Index");
+            }
+            catch
+            {
+                PopulateSelections(collection);
+                return View(collection);
+            }
+        }
+        
+        public ActionResult Delete(int id)
+        {
+            SkrydisEditViewModel skrydis = skrydziaiRepository.getSkrydis(id);
+            return View(skrydis);
+        }
+
+        [HttpPost]
+        public ActionResult Delete(int id, FormCollection collection)
+        {
+            try
+            {
+                SkrydisEditViewModel skrydis = skrydziaiRepository.getSkrydis(id);
+
+                skrydziaiRepository.deleteSkrydis(id);
+
+                return RedirectToAction("Index");
+            }
+            catch
+            {
+                return View();
+            }
+        }
+
         public void PopulateSelections(SkrydisEditViewModel skrydis)
         {
             var lektuvai = lektuvaiRepository.getLektuvai();

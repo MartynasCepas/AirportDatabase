@@ -145,6 +145,7 @@
     <Compile Include="Models\Kryptis.cs" />
     <Compile Include="Models\Lektuvas.cs" />
     <Compile Include="Models\Skrydis.cs" />
+    <Compile Include="Models\SkrydzioBilietas.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Reps\BilietaiRepository.cs" />
     <Compile Include="Reps\KlientaiRepository.cs" />
@@ -155,6 +156,7 @@
     <Compile Include="ViewModels\BilietasViewModel.cs" />
     <Compile Include="ViewModels\SkrydisEditViewModel.cs" />
     <Compile Include="ViewModels\SkrydisViewModel.cs" />
+    <Compile Include="ViewModels\SkrydziaiEditViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-theme.css" />
@@ -210,6 +212,8 @@
     <Content Include="Views\Bilietas\Delete.cshtml" />
     <Content Include="Views\Skrydis\Index.cshtml" />
     <Content Include="Views\Skrydis\Create.cshtml" />
+    <Content Include="Views\Skrydis\Edit.cshtml" />
+    <Content Include="Views\Skrydis\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

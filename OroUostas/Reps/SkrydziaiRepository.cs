@@ -59,11 +59,9 @@ namespace OroUostas.Reps
             mda.Fill(dt);
             mySqlConnection.Close();
 
-            
-
             foreach (DataRow item in dt.Rows)
             {
-                var t = Convert.ToDateTime(item["skrydzio_laikas"]); 
+                var t = Convert.ToDateTime(item["skrydzio_data"]); 
                 var time = new TimeSpan(t.Hour,t.Minute,t.Second);
                 skrydis.id = Convert.ToInt32(item["skrydzio_id"]);
                 skrydis.data = Convert.ToDateTime(item["skrydzio_data"]);
@@ -92,6 +90,37 @@ namespace OroUostas.Reps
             mySqlCommand.ExecuteNonQuery();
             mySqlConnection.Close();
             return true;
+        }
+
+        public bool updateSkrydis(SkrydisEditViewModel skrydis)
+        {
+            string conn = ConfigurationManager.ConnectionStrings["MysqlConnection"].ConnectionString;
+            MySqlConnection mySqlConnection = new MySqlConnection(conn);
+            string sqlquery = @"UPDATE "+"skrydziai a SET a.skrydzio_data=?data, a.skrydzio_laikas=?laikas, a.fk_lektuvaikebulo_nr=?lektuvas, a.fk_kryptyskryptis_id=?kryptis WHERE a.skrydzio_id=?id";
+            MySqlCommand mySqlCommand = new MySqlCommand(sqlquery, mySqlConnection);
+            mySqlCommand.Parameters.Add("?id", MySqlDbType.Int32).Value = skrydis.id;
+            var data = new DateTime(skrydis.data.Year, skrydis.data.Month, skrydis.data.Day);
+            mySqlCommand.Parameters.Add("?data", MySqlDbType.Date).Value = data;
+            skrydis.laikas.Add(new TimeSpan(skrydis.data.Hour, skrydis.data.Minute, skrydis.data.Second));
+            mySqlCommand.Parameters.Add("?laikas", MySqlDbType.Time).Value = skrydis.laikas;
+            mySqlCommand.Parameters.Add("?lektuvas", MySqlDbType.Int32).Value = skrydis.fk_lektuvas;
+            mySqlCommand.Parameters.Add("?kryptis", MySqlDbType.Int32).Value = skrydis.fk_kryptis;
+            mySqlConnection.Open();
+            mySqlCommand.ExecuteNonQuery();
+            mySqlConnection.Close();
+            return true;
+        }
+
+        public void deleteSkrydis(int id)
+        {
+            string conn = ConfigurationManager.ConnectionStrings["MysqlConnection"].ConnectionString;
+            MySqlConnection mySqlConnection = new MySqlConnection(conn);
+            string sqlquery = @"DELETE FROM "+"skrydziai where skrydzio_id=?id";
+            MySqlCommand mySqlCommand = new MySqlCommand(sqlquery, mySqlConnection);
+            mySqlCommand.Parameters.Add("?id", MySqlDbType.Int32).Value = id;
+            mySqlConnection.Open();
+            mySqlCommand.ExecuteNonQuery();
+            mySqlConnection.Close();
         }
 
         public int getNewId()
