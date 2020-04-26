@@ -136,16 +136,25 @@
     <Compile Include="Controllers\BilietaiController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\KlientasController.cs" />
+    <Compile Include="Controllers\SkrydisController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Bilietas.cs" />
     <Compile Include="Models\Klientas.cs" />
+    <Compile Include="Models\Kryptis.cs" />
+    <Compile Include="Models\Lektuvas.cs" />
+    <Compile Include="Models\Skrydis.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Reps\BilietaiRepository.cs" />
     <Compile Include="Reps\KlientaiRepository.cs" />
+    <Compile Include="Reps\KryptysRepository.cs" />
+    <Compile Include="Reps\LektuvaiRepository.cs" />
+    <Compile Include="Reps\SkrydziaiRepository.cs" />
     <Compile Include="ViewModels\BilietasEditViewModel.cs" />
     <Compile Include="ViewModels\BilietasViewModel.cs" />
+    <Compile Include="ViewModels\SkrydisEditViewModel.cs" />
+    <Compile Include="ViewModels\SkrydisViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-theme.css" />
@@ -199,6 +208,8 @@
     <Content Include="Views\Bilietas\Create.cshtml" />
     <Content Include="Views\Bilietas\Edit.cshtml" />
     <Content Include="Views\Bilietas\Delete.cshtml" />
+    <Content Include="Views\Skrydis\Index.cshtml" />
+    <Content Include="Views\Skrydis\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
