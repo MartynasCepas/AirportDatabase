@@ -1,0 +1,47 @@
+﻿@model IEnumerable<OroUostas.ViewModels.SkrydzioBilietasViewModel>
+
+@{
+    ViewBag.Title = "Naujas Skrydzio Bilietas";
+}
+
+<h2>Skrydzio bilietai</h2>
+<p>
+    @Html.ActionLink("Naujas skrydzio bilietas", "Create", "SkrydzioBilietas", new { @class = "btn btn-success" })
+</p>
+<table class="table table-striped datatable">
+    <thead>
+        <tr style="background-color: lightblue">
+            <th>
+                @Html.DisplayNameFor(model => model.id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.fk_bilietas)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.fk_skrydis)
+            </th>
+            <th style="width: 18%"></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.fk_bilietas)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.fk_skrydis)
+                </td>
+                <td>
+                    @Html.ActionLink("Redaguoti", "Edit", new { id = item.id }, new { @class = "btn btn-primary action" })
+                    @Html.ActionLink("Šalinti", "Delete", new { id = item.id }, new { @class = "btn btn-danger action" })
+                </td>
+            </tr>
+        }
+    </tbody>
+
+</table>
